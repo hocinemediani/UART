@@ -14,12 +14,14 @@ end TxUnit;
 
 architecture behavorial of TxUnit is
 
+  type state is (IDLE, INIT, EMIT);
+  signal currentState : state;
+
 begin
 
-  -- affectation des sorties pour que la simulation aille jusqu'au bout
-  -- À EFFACER
-  txd <= '0';
-  regE <= '0';
-  bufE <= '0';
+  proc_name: process(clk, reset)
+  begin
+    
+  end process;
 
 end behavorial;
