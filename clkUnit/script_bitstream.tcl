@@ -1,11 +1,10 @@
 set design_name "Nexys4"
 
 # read design sources (add one line for each file)
-read_vhdl {"clkUnit.vhd" "diviseurClk10Hz.vhd" "Nexys4.vhd"}
+read_vhdl {"clkUnit.vhd" "diviseurClk10Hz.vhd" "Nexys4.vhd" "diviseurClk.vhd"}
 
 # read constraints
-read_xdc "Nexys4.xdc"
-#read_xdc "Nexys4_DDR.xdc"
+read_xdc "Nexys4_DDR.xdc"
 
 # DO NOT TOUCH BELOW THIS LINE
 set fpga_part "xc7a100tcsg324-1"

@@ -3,6 +3,11 @@ Travail à réaliser
 
 compléter l'architecture du composant clkUnit (clkUnit.vhd)
 
+Carte cible :
+==================
+
+Nexys4 DDR
+
 Simulation
 ==========
 

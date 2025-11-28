@@ -1,17 +1,17 @@
 GHDL=ghdl
 GHDLFLAGS=-fsynopsys --std=08
 MODULES=\
-    clkUnit.o \
-	testClkUnit.o \
-	diviseurClk.o
+      ../clkUnit/clkUnit.o \
+      TxUnit.o \
+      testTxUnit.o
 
-TIME=10us
+TIME=40us
 PLOT=output
 
 all: test
 
 test: $(MODULES)
-	$(GHDL) -r $(GHDLFLAGS) testClkUnit \
+	$(GHDL) -r $(GHDLFLAGS) testTxUnit \
 	--stop-time=${TIME} \
 	--vcd=${PLOT}.vcd
        

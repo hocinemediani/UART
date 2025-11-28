@@ -11,11 +11,24 @@ end clkUnit;
 
 architecture behavorial of clkUnit is
 
+  component diviseurClk is
+    generic(facteur : natural);
+    port(
+      clk, reset : in  std_logic;
+      nclk       : out std_logic);
+  end component;
+
+  signal    clkRX : std_logic;
+  signal    clkTX : std_logic;
+
 begin
 
-  -- affectation des sorties pour que la simulation et la génération du bitstream aillent jusqu'au bout
-  -- À EFFACER
-  enableTX <= '0';
-  enableRX <= '0';
+  diviseurClkRx : diviseurClk
+    generic map (10)
+    port map(clk => clk, reset => reset, nclk => enableRX);
+  
+  diviseurClkTx : diviseurClk
+    generic map (160)
+    port map(clk => clk, reset => reset, nclk => enableTX);
 
 end behavorial;
