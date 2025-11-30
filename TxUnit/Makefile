@@ -3,9 +3,10 @@ GHDLFLAGS=-fsynopsys --std=08
 MODULES=\
       ../clkUnit/clkUnit.o \
       TxUnit.o \
-      testTxUnit.o
+      testTxUnit.o \
+      ../clkUnit/diviseurClk.o
 
-TIME=40us
+TIME=70us
 PLOT=output
 
 all: test

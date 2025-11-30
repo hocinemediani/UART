@@ -151,11 +151,37 @@ BEGIN
     data <= "01010000";
     wait for clk_period;
     ld <= '0';
+
+    -- emission du caractère 0xCC au moment où on libère le buffer
+    -- qui sera pris en compte au top d'horloge suivant
+    -- et on remplace aussitôt par undefined en laissant traîner un peu ld
+    -- pour vérifier que c'est bien pris en compte
+    wait until bufE='1';
+    data <= "11001100";
+    ld <= '1';
+    wait for 2*clk_period;
+    data <= "UUUUUUUU";
+    wait for 2*clk_period;
+    ld <= '0';
+
+    -- emission du caractère 0xF0 au milieu d'une émission
+    -- on remplace aussitôt par undefined
+    -- pour vérifier que c'est bien pris en compte
+    wait for 20 us;
+    ld <= '1';
+    data <= "11110000";
+    wait for clk_period;
+    ld <= '0';
+    data <= "UUUUUUUU";
+
+
     -- on a alors :
       -- * emission de 0x55.
       -- * prise en compte de la demande d'emission de 0x45 car le buffer a ete libere.
       -- * demande d'emission de 0x50, non prise en compte car le buffer est plein a ce
       -- moment la.
+      -- * prise en compte de la demande d'emission pour OxCC
+      -- * prise en compte de la demande d'emission pour 0xF0
       -- fin de la transmission avex txd qui repart a 1.
     wait;
   end process;
