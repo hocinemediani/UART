@@ -44,7 +44,7 @@ begin
               compteur := compteur - 1;
               if (compteur = '0') then
                 tmpClk <= not tmpClk;
-                compteur := 8;
+                compteur := 8; 
               end if;
             end if;
         end case;
