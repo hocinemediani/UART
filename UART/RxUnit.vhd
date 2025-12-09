@@ -15,4 +15,9 @@ architecture behavorial of RxUnit is
 
 begin
 
+data <= (others => '0');
+Ferr <= '0';
+OErr <= '0';
+DRdy <= '0';
+
 end behavorial;
