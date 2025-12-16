@@ -49,7 +49,7 @@ begin
       tmpClk => tmpClk,
       tmpRxd => tmpRxd);
   
-  controleReceptionInst : compteurReception
+  controleReceptionInst : controleReception
     port map(
       clk => clk,
       reset => reset,
