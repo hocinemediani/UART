@@ -5,10 +5,10 @@ use IEEE.numeric_std.all;
 entity controleReception is
   port (
     clk 		: in std_logic;
-    reset 	: in std_logic;
+    reset 	    : in std_logic;
     read 		: in std_logic;
-    tmpClk 	: in std_logic;
-    tmpRxd 	: in std_logic;
+    tmpClk 	    : in std_logic;
+    tmpRxd 	    : in std_logic;
     FErr 		: out std_logic;
     OErr 		: out std_logic;
     DRdy 		: out std_logic;
@@ -40,7 +40,7 @@ begin
         data <= (others => 'U');
         etat <= REPOS;
 
-      else if (rising_edge(clk)) then
+      elsif (rising_edge(clk)) then
         case etat is
           when REPOS =>
             if (tmpClk = '1' and tmpRxd = '0') then
@@ -54,7 +54,7 @@ begin
 
           when RECEPTION =>
             -- donnée positionnée sur tmpRxd au front montant de tmpClk
-            if (tmpClk = '1')
+            if (tmpClk = '1') then
               -- on la lit
               buf(compteur) <= tmpRxd;
     
@@ -86,7 +86,7 @@ begin
             if (compteur_read = 0) then
               OErr <= '1';
               DRdy <= '0';
-            else if (read = '1') then
+            elsif (read = '1') then
               DRdy <= '0';
               etat <= REPOS;
             end if;

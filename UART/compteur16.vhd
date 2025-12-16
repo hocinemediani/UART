@@ -17,9 +17,12 @@ architecture behavioral of compteur16 is
   type t_etat is (REPOS, COMPTAGE);
 
   signal etat : t_etat := REPOS;
+  signal tmpClk_i : std_logic;
   
   
 begin
+
+  tmpClk <= tmpClk_i;
   
   process (clk, reset) is
 
@@ -33,7 +36,7 @@ begin
       compteur := 8;
       tmpRxd <= 'U';
 
-    else if (rising_edge(clk) and enable = '1') then
+    elsif (rising_edge(clk) and enable = '1') then
       case etat is
         when REPOS =>
           if (RxD = '0') then
@@ -44,7 +47,7 @@ begin
           compteur := compteur - 1;
           if (compteur = 0) then
             compteur := 8;
-            if (tmpClk = '0') then
+            if (tmpClk_i = '0') then
               tmpRxd <= RxD;
               tmpClk <= '1';
             else
@@ -53,8 +56,6 @@ begin
           end if;
       end case;
     end if;
-
-  end
-  
-        
+  end process;
+ 
 end behavioral;

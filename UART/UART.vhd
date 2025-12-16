@@ -65,6 +65,7 @@ architecture UARTunit_arch of UARTunit is
   signal enableTX, enableRX : std_logic;
   signal regE, bufE : std_logic;
   signal DRdy, FErr, OErr : std_logic;
+  signal ctrlReg : std_logic_vector(7 downto 0);
 
 
   begin  -- UARTunit_arch

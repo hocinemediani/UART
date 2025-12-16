@@ -176,3 +176,10 @@ set_property PACKAGE_PIN R10 [get_ports btnR]
 #Bank = 14, Pin name = IO_L21P_T3_DQS_14,					Sch name = BTND
 set_property PACKAGE_PIN V10 [get_ports btnD]						
 	set_property IOSTANDARD LVCMOS33 [get_ports btnD]
+
+
+set_property PACKAGE_PIN C4 [get_ports TxD]
+	set_property IOSTANDARD LVCMOS33 [get_ports TxD]
+
+set_property PACKAGE_PIN D4 [get_ports RxD]
+	set_property IOSTANDARD LVCMOS33 [get_ports RxD]
