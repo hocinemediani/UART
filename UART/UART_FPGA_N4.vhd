@@ -7,6 +7,8 @@ entity UART_FPGA_N4 is
   port(
     -- bouton noir central qui sert pour le reset
     btnC : in std_logic;
+    -- leds
+    led : out std_logic_vector(5 downto 0);
     -- horloge
     mclk : in std_logic;
     -- ligne série (à rajouter)
@@ -89,7 +91,7 @@ begin
       );
 
     diviseurClkInst : diviseurClk
-      generic map (65)
+      generic map (64)
       port map (
         clk => mclk,
         reset => resetBtn,

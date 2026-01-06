@@ -120,6 +120,6 @@ architecture UARTunit_arch of UARTunit is
         RegE => regE,
         IntR => IntR,
         IntT => IntT,
-        ctrlReg => ctrlReg);
+        ctrlReg => registre_controle);
 
   end UARTunit_arch;
