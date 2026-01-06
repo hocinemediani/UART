@@ -102,7 +102,7 @@ architecture UARTunit_arch of UARTunit is
         enable => enableRX,
         read => lecture,
         rxd => RxD,
-        data => data_out,
+        data => donnees_recues,
         Ferr => Ferr,
         OErr => OErr,
         DRdy => DRdy);
