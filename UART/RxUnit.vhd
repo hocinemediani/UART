@@ -17,10 +17,10 @@ architecture behavorial of RxUnit is
   
   component compteur16 is
   port (
-    clk 	: in std_logic;
+    clk 	  : in std_logic;
     enable 	: in std_logic;
     reset 	: in std_logic;
-    RxD 	: in std_logic;
+    RxD 	  : in std_logic;
     tmpClk 	: out std_logic;
     tmpRxd 	: out std_logic);
   end component;
@@ -28,10 +28,10 @@ architecture behavorial of RxUnit is
   component controleReception is
   port (
     clk 		: in std_logic;
-    reset 	    : in std_logic;
+    reset 	: in std_logic;
     read 		: in std_logic;
-    tmpClk 	    : in std_logic;
-    tmpRxd 	    : in std_logic;
+    tmpClk 	: in std_logic;
+    tmpRxd 	: in std_logic;
     FErr 		: out std_logic;
     OErr 		: out std_logic;
     DRdy 		: out std_logic;

@@ -35,14 +35,12 @@ begin
       etat <= REPOS;
       compteur := 8;
       tmpRxd <= 'U';
-
     elsif (rising_edge(clk) and enable = '1') then
       case etat is
         when REPOS =>
           if (RxD = '0') then
             etat <= COMPTAGE;
           end if;
-
         when COMPTAGE =>
           compteur := compteur - 1;
           if (compteur = 0) then
