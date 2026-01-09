@@ -83,7 +83,7 @@ BEGIN
   uut0: RxUnit PORT MAP (
         clk => clk,
         reset => reset,
-        enable => enableTX,
+        enable => enableRX,
         read => read,
         rxd => rxd,
         data => data,

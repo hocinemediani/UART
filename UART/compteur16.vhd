@@ -31,25 +31,28 @@ begin
   begin
 
     if (reset = '0') then
-      tmpClk <= '1';
+      tmpClk_i <= '1';
       etat <= REPOS;
       compteur := 8;
       tmpRxd <= 'U';
-    elsif (rising_edge(clk) and enable = '1') then
+    elsif (rising_edge(clk)) then
       case etat is
         when REPOS =>
-          if (RxD = '0') then
+          if (enable = '1' and RxD = '0') then
             etat <= COMPTAGE;
           end if;
         when COMPTAGE =>
-          compteur := compteur - 1;
-          if (compteur = 0) then
-            compteur := 8;
-            if (tmpClk_i = '0') then
-              tmpRxd <= RxD;
-              tmpClk <= '1';
-            else
-              tmpClk <= '0';
+          if (tmpClk_i = '1') then
+            tmpClk_i <= '0';
+          end if;
+          if (enable = '1') then
+            compteur := compteur - 1;
+            if (compteur = 0) then
+              compteur := 16;
+              if (tmpClk_i = '0') then
+                tmpRxd <= RxD;
+                tmpClk_i <= '1';
+              end if;
             end if;
           end if;
       end case;

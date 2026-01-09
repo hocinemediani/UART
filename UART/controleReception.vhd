@@ -19,7 +19,7 @@ architecture behavioral of controleReception is
 
   signal buf : std_logic_vector(9 downto 0) := (others => 'U');
 
-  type t_etat is (REPOS, RECEPTION, ATTENTE);
+  type t_etat is (REPOS, RECEPTION, ATTENTE, FIN);
   signal etat : t_etat := REPOS;
   
 begin
@@ -73,6 +73,7 @@ begin
                 else
                   -- bit de stop incorrect
                   FErr <= '1';
+                  etat <= FIN;
                 end if;
               
               else
@@ -88,8 +89,11 @@ begin
               DRdy <= '0';
             elsif (read = '1') then
               DRdy <= '0';
-              etat <= REPOS;
             end if;
+            etat <= FIN;
+          
+          when FIN =>
+            null;
         end case;
       end if;
     end process;
