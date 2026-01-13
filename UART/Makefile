@@ -8,7 +8,7 @@ MODULES=\
 	  clkUnit.o \
 	  diviseurClk.o
 
-TIME=100us
+TIME=80us
 PLOT=output
 
 all: test
